@@ -1,10 +1,10 @@
 import AppError from '@shared/errors/AppError';
 import recipiespuppy from '@shared/infra/http/apis/recipepuppy.api'
 import Giphy from '@shared/infra/http/apis/giphy.api'
+
 interface IRequestDTO {
     i: string;
 }
-
 
 interface RecipiesRequest {
     title: string;
@@ -13,21 +13,13 @@ interface RecipiesRequest {
     thumbnail: string;
 }
 
-/* 
-    SAIDA 
-  title: string;
-  ingredients: [];
-  link: string;
-  gif: string
-*/
 export default class ListRecipiesService {
 
     public async execute({ i }: IRequestDTO): Promise<any> {
         const keywords = i.split(',')
-
         const response = await recipiespuppy.get(`/`, {
             params: {
-                i,
+                i
             }
         })
 
@@ -43,12 +35,11 @@ export default class ListRecipiesService {
                 const returnGif = await Giphy.get('/v1/gifs/search', {
                     params: {
                         q: title,
-                        api_key: 'xyvj36YL6N4hvv2QSJYj9qZhOMyYpCPM',
                         limit: 1
                     }
                 })
                 const gif = returnGif.data.data[0].images.original.url;
-                
+
                 return { title, ingredients, link, gif }
             })
         )

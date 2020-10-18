@@ -1,4 +1,8 @@
+import dotenv from 'dotenv'
+import path from 'path'
 import express, { Request, Response, NextFunction } from 'express';
+
+dotenv.config({ path: path.join(__dirname, '..', '..', '..', '..', '.env') });
 import '@shared/container'
 
 import 'express-async-errors';
@@ -13,7 +17,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(routes);
-
 app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
   if (err instanceof AppError) {
     return res.status(err.statusCode).json({
