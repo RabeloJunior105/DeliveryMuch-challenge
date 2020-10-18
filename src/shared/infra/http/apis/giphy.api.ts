@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const recipepuppy = axios.create({
-  baseURL: 'http://www.recipepuppy.com/api/',
+const giphy = axios.create({
+  baseURL: 'https://api.giphy.com',
 });
 
-export default recipepuppy;
+export default giphy;

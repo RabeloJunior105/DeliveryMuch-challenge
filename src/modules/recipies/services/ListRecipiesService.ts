@@ -1,6 +1,6 @@
 import AppError from '@shared/errors/AppError';
 import recipiespuppy from '@shared/infra/http/apis/recipepuppy.api'
-
+import Giphy from '@shared/infra/http/apis/giphy.api'
 interface IRequestDTO {
     i: string;
 }
@@ -37,11 +37,19 @@ export default class ListRecipiesService {
 
         const result = await Promise.all(
             await response.data.results.map(async (results: RecipiesRequest) => {
-                const { title, ingredients: ingredient, href, thumbnail } = results
-                
+                const { title, ingredients: ingredient, href: link } = results
+
                 const ingredients = ingredient.split(', ').sort()
+                const returnGif = await Giphy.get('/v1/gifs/search', {
+                    params: {
+                        q: title,
+                        api_key: 'xyvj36YL6N4hvv2QSJYj9qZhOMyYpCPM',
+                        limit: 1
+                    }
+                })
+                const gif = returnGif.data.data[0].images.original.url;
                 
-                return { title, ingredients, links: href, thumbnail }
+                return { title, ingredients, link, gif }
             })
         )
         return { keywords, recipies: result }
