@@ -17,4 +17,7 @@ COPY . .
 EXPOSE 3000
 
 # Roda o comando 'npm start'
+CMD [ "npm", "build" ]
+
+# Roda o comando 'npm start'
 CMD [ "npm", "start" ]
