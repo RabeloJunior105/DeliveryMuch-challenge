@@ -2,7 +2,7 @@ import dotenv from 'dotenv'
 import path from 'path'
 import express, { Request, Response, NextFunction } from 'express';
 
-dotenv.config({ path: path.join(__dirname, '..', '..', '..', '..', '.env') });
+dotenv.config({ path: '../../../../.env' });
 import '@shared/container'
 
 import 'express-async-errors';
