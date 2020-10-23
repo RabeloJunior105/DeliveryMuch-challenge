@@ -9,14 +9,17 @@ Use o gerenciamento de pacote [npm](https://nodejs.org/en/) ou [yarn](https://ya
 ## VARIÁVEIS GLOBAIS
 Crie um arquivo .env copie as informações do arquivo .env-example e cole no seu .env com as credenciais do [GIPHY](https://developers.giphy.com/docs/sdk), assim você conseguira ter o retorno das gifs de cada receita
 
-## INICIALIZAÇÃO PELO DOCKER
-É Necessario conter o docker instalado na máquina
+## INICIALIZAÇÃO O PROJETO
+Para iniciarmos a aplicação, necessitamos instalar todas as dependencias
 
 Rode os seguintes comandos:
 
 ```bash
-$ docker build -t seunome/docker-{nome-do-projeto} .
-$ docker run -p 49160:3000 -d seunome/
+npm install ou yarn
+```
+Depos rode o seguinte comando para startar a aplicação em mode DEV
+```bash
+npm start:dev
 ```
 
 ### Acesse a aplicação
