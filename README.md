@@ -9,6 +9,19 @@ Use o gerenciamento de pacote [npm](https://nodejs.org/en/) ou [yarn](https://ya
 ## VARIÁVEIS GLOBAIS
 Crie um arquivo .env copie as informações do arquivo .env-example e cole no seu .env com as credenciais do [GIPHY](https://developers.giphy.com/docs/sdk), assim você conseguira ter o retorno das gifs de cada receita
 
+## INICIALIZAÇÃO PELO DOCKER
+É Necessario conter o docker instalado na máquina
+
+Rode os seguintes comandos:
+
+```bash
+$ docker build -t seunome/docker-{nome-do-projeto} .
+$ docker run -p 49160:3000 -d seunome/
+```
+
+### Acesse a aplicação
+Em seu navegador
+
 ## SOBRE AS ROTAS
 
 URL E PORTA BASE PARA ACESSO DA API LOCAL
@@ -40,6 +53,7 @@ RETORNO
   ]
 }
 ```
+
 
 ## License
 [Junior Rabelo](https://github.com/delivery-much/challenge)
